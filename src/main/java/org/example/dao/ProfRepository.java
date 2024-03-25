@@ -10,10 +10,10 @@ import java.util.Optional;
 public interface ProfRepository extends JpaRepository<Prof, Long> {
 
     @Query("""
-                        select p from Prof p 
-                        left join fetch p.cours c
-                        left join fetch c.etudiants
-                        where lower(p.nomProf) = lower(:name)
-                        """)
+        select p from Prof p
+        left join fetch p.cours c
+        left join fetch c.etudiants
+        where lower(p.nomProf) = lower(:name)
+        """)
     Optional<Prof> findByNomProf(@Param("name") String prof);
 }
