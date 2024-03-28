@@ -55,10 +55,6 @@ public class RootController {
     @PostMapping("/editprof")
     public String editProf(@ModelAttribute ProfDto prof, Model model, BindingResult bindingResult){
 
-        if(bindingResult.hasErrors()) {
-            return "editProf";
-        }
-
         ecoleService.saveProf(prof);
 
         return "redirect:/profs";
