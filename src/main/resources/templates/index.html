@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page d'accueil</title>
+</head>
+<body>
+    <h1>Ecole Intra</h1>
+    <p>Bienvenue à la page d'accueil</p>
+
+    <p>Recherche de document</p>
+
+    <a href="/">Page principale</a>                 <br>
+    <a href="/ajouteprof">Ajouter un prof</a>                 <br>
+    <a href="/ajoutcours">Ajouter un cours</a>  <br>
+    <a href="/ajoutetudiant">Ajouter un etudiant</a>     <br>
+    <a href="/profs">Liste les profs</a>     <br>
+
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>Id</th>-->
+<!--            <th>Nom</th>-->
+<!--            <th>Prénom</th>-->
+<!--            <th>Adresse</th>-->
+<!--        </tr>-->
+<!--        <tr th:each="client : ${clients}">-->
+<!--            <td ><a th:href="@{/dossierClient/{id}(id=${client.id})}" th:text="${client.id}"></a></td>-->
+<!--            <td th:text="${client.nom}"></td>-->
+<!--            <td th:text="${client.prenom}"></td>-->
+<!--            <td th:text="${client.adresse}"></td>-->
+<!--        </tr>-->
+<!--    </table>-->
+</body>
+</html>

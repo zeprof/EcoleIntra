@@ -4,6 +4,7 @@ import org.example.modele.Cours;
 import org.example.modele.Etudiant;
 import org.example.modele.Prof;
 import org.example.service.EcoleService;
+import org.example.service.dto.ProfDto;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,7 +34,7 @@ public class EcoleIntraSpringBootApplication implements CommandLineRunner{
 
         ecoleService.createProf(prof);
 
-        Prof prof2 = ecoleService.findProf("Nicolas");
+        ProfDto prof2 = ecoleService.findProf("Nicolas");
         System.out.println(prof2);
     }
 }

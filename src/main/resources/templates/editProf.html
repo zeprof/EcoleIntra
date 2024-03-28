@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Prof</title>
+</head>
+<body>
+<h1>Edit un prof</h1>
+<h2>Remplisser le formulaire du professeur</h2>
+<form th:action="@{/editprof}" th:object="${prof}" method="post">
+    <label for="nom">Nom</label>
+    <input type="text" name="nom" id="nom" th:field="*{nomProf}">
+    <input type="hidden" name="id" id="profid"
+           th:field="*{id}" th:text="${prof.id}">
+    <input type="submit" value="Envoyer">
+</form>
+
+<a href="/">Page principale</a><br>
+
+</body>
+</html>

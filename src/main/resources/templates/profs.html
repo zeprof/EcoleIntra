@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profs</title>
+</head>
+<body>
+<table class="min-w-full">
+    <thead>
+    <!-- tag::tr[] -->
+    <tr>
+        <th>ProfName</th>
+        <th ></th>
+    </tr>
+    <!-- end::tr[] -->
+    </thead>
+    <tbody>
+    <!-- tag::tr-body[] -->
+    <tr class="bg-white" th:each="prof : ${profs}">
+        <td th:text="${prof.nomProf}">ProfName</td> <!--.-->
+<!--    <td th:href="/prof/${prof.id}" th:text="Edit">Edit</td> &lt;!&ndash;.&ndash;&gt;-->
+        <td><a th:href="@{/prof/{id}(id=${prof.id})}" th:text="${prof.id}"></a></td>
+    </tr>
+    <!-- end::tr-body[] -->
+    </tbody>
+</table>
+
+</body>
+</html>
