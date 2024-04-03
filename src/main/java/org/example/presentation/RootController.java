@@ -4,14 +4,15 @@ import jakarta.validation.Valid;
 import org.example.service.EcoleService;
 import org.example.service.dto.ProfDto;
 import org.example.service.dto.ProfDtoNew;
+import org.example.service.dto.UnDtoAvecDate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,5 +64,19 @@ public class RootController {
         ecoleService.saveProf(prof);
 
         return "redirect:/profs";
+    }
+
+    @GetMapping("/dateexamples")
+    public String dateExammples(Model model) {
+        model.addAttribute("localDateTime", LocalDateTime.now());
+        model.addAttribute("localDate", LocalDate.now());
+        model.addAttribute("timestamp", Instant.now());
+        model.addAttribute("unDtoAvecDate", new UnDtoAvecDate());
+        return "datesExample";
+    }
+
+    @PostMapping("/undtoavecdate")
+    public String unDtoAvecDate(@ModelAttribute("unDtoAvecDate")UnDtoAvecDate unDtoAvecDate) {
+        return "redirect:/dateexamples";
     }
 }
