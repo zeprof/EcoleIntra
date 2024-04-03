@@ -1,6 +1,7 @@
 package org.example.dao;
 
 import org.example.modele.Prof;
+import org.example.service.dto.ProfDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

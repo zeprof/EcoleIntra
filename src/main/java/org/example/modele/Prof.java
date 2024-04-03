@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +21,7 @@ public class Prof {
     private Long id;
 
     private String nomProf;
+    private LocalDate dateNaissance;
 
     @OneToMany(mappedBy = "prof", cascade = CascadeType.PERSIST)
     private Set<Cours> cours = new HashSet<>();
