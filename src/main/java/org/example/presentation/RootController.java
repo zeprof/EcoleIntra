@@ -1,5 +1,6 @@
 package org.example.presentation;
 
+import jakarta.validation.Valid;
 import org.example.service.EcoleService;
 import org.example.service.dto.ProfDto;
 import org.example.service.dto.ProfDtoNew;
@@ -24,14 +25,16 @@ public class RootController {
 
     @GetMapping("/ajouteprof")
     public String ajoutProf(Model model){
-        model.addAttribute("prof", new ProfDtoNew(""));
+        model.addAttribute("prof", new ProfDtoNew());
         return "ajouteProf";
     }
 
     @PostMapping("/ajouteprof")
-    public String ajouteProf(@ModelAttribute ProfDtoNew prof, Model model){
-
-        ecoleService.createProf(prof.nomProf());
+    public String ajouteProf(@Valid @ModelAttribute("prof") ProfDtoNew prof, BindingResult result){
+        if (result.hasErrors()) {
+            return "ajouteProf";
+        }
+        ecoleService.createProf(prof.getNomProf());
 
         return "redirect:/profs";
     }
@@ -53,8 +56,10 @@ public class RootController {
     }
 
     @PostMapping("/editprof")
-    public String editProf(@ModelAttribute ProfDto prof, Model model, BindingResult bindingResult){
-
+    public String editProf(@Valid @ModelAttribute("prof") ProfDto prof, BindingResult result){
+        if (result.hasErrors()) {
+            return "editprof";
+        }
         ecoleService.saveProf(prof);
 
         return "redirect:/profs";

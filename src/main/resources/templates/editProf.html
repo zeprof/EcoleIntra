@@ -10,6 +10,7 @@
 <form th:action="@{/editprof}" th:object="${prof}" method="post">
     <label for="nom">Nom</label>
     <input type="text" name="nom" id="nom" th:field="*{nomProf}">
+    <p style="color: crimson" th:if="${#fields.hasErrors('nomProf')}" th:errors="*{nomProf}">Name Error</p>
     <input type="hidden" name="id" id="profid"
            th:field="*{id}" th:text="${prof.id}">
     <input type="submit" value="Envoyer">

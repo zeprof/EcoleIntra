@@ -14,13 +14,9 @@ import java.util.Optional;
 @Service
 public class EcoleService {
 
-    private final CoursRepository coursRepository;
-    private final EtudiantRepository etudiantRepository;
     private final ProfRepository profRepository;
 
-    public EcoleService(CoursRepository coursRepository, EtudiantRepository etudiantRepository, ProfRepository profRepository) {
-        this.coursRepository = coursRepository;
-        this.etudiantRepository = etudiantRepository;
+    public EcoleService(ProfRepository profRepository) {
         this.profRepository = profRepository;
     }
 
@@ -61,10 +57,10 @@ public class EcoleService {
     }
 
     public Optional<ProfDto> saveProf(ProfDto profDto) {
-        final Optional<Prof> profOpt = profRepository.findById(profDto.id());
+        final Optional<Prof> profOpt = profRepository.findById(profDto.getId());
         if (profOpt.isPresent()) {
             Prof p = profOpt.get();
-            p.setNomProf(profDto.nomProf());
+            p.setNomProf(profDto.getNomProf());
             final Prof saved = profRepository.save(p);
             return Optional.of(ProfDto.toProfDto(saved));
         }
